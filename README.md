@@ -3,3 +3,4 @@ Game for Android
 
 
 what is bs?
+백석
