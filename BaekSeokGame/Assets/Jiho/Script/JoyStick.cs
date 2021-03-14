@@ -14,7 +14,10 @@ public class JoyStick : MonoBehaviour,IPointerUpHandler,IDragHandler, IPointerDo
     public void OnDrag(PointerEventData eventData)
     {
         touch = (eventData.position - rect.anchoredPosition) / widthHalf;
-
+        if (touch.magnitude > 1)
+        {
+            touch = touch.normalized;
+        }
         handler.anchoredPosition = touch * widthHalf;
     }
 
