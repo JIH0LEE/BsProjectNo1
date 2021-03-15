@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class DontDestroyPlayer : MonoBehaviour
+public class DontDestroy : MonoBehaviour
 {
-    static DontDestroyPlayer instance =null;
+    static DontDestroy instance =null;
     // Start is called before the first frame update
     void Start()
     {
