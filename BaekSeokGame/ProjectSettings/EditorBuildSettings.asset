@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Jiho/Scene/map1.unity
+    guid: b5813084808d9c64bbb18f288b336219
+  - enabled: 1
+    path: Assets/Jiho/Scene/map2.unity
+    guid: c48bd56b8148fe94ca42bef737934416
   m_configObjects: {}

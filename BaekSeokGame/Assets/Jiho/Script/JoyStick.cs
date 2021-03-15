@@ -9,6 +9,7 @@ public class JoyStick : MonoBehaviour,IPointerUpHandler,IDragHandler, IPointerDo
 
     Vector2 touch=Vector2.zero;
     public RectTransform handler;
+   
     float widthHalf;
 
     public void OnDrag(PointerEventData eventData)
@@ -36,6 +37,7 @@ public class JoyStick : MonoBehaviour,IPointerUpHandler,IDragHandler, IPointerDo
     // Start is called before the first frame update
     void Start()
     {
+       
         rect = GetComponent<RectTransform>();
         widthHalf= rect.sizeDelta.x * 0.5f;
     }
