@@ -34,7 +34,7 @@ public class JoyStick : MonoBehaviour,IPointerUpHandler,IDragHandler, IPointerDo
 
 
 
-    // Start is called before the first frame update
+    
     void Start()
     {
        
@@ -42,7 +42,7 @@ public class JoyStick : MonoBehaviour,IPointerUpHandler,IDragHandler, IPointerDo
         widthHalf= rect.sizeDelta.x * 0.5f;
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         

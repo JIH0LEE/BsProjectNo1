@@ -8,18 +8,17 @@ public class DialogController : MonoBehaviour
 
 
  {
-    public GameObject Button;
-    public GameObject ui;
-    public Text name;
+    public GameObject hidingObject;
+    public GameObject dialogUI;
+    public Text npcName;
     public Text dialogBody;
     bool isTalking;
-    // Start is called before the first frame update
+   
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -27,18 +26,19 @@ public class DialogController : MonoBehaviour
 
     public void Action(GameObject npc)
     {
-        if (isTalking)
+        if (isTalking)                      //when isTalikiing is true and Action again, change status to false.
         {
             isTalking = false;
         }
         else
         {
             isTalking = true;
-            
-            name.text = npc.name;
+            npcName.text = npc.name;
             dialogBody.text = npc.name;
         }
-        Button.SetActive(!isTalking);
-        ui.SetActive(isTalking);
+
+        //Change ui status through isTalking flag.
+        hidingObject.SetActive(!isTalking);
+        dialogUI.SetActive(isTalking);
     }
 }

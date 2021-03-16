@@ -5,9 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class Portal : MonoBehaviour
 {
-    // Start is called before the first frame update
+    
     public string currentMap;
     public string nextMap;
+
+
     PlayerController playerControl;
     GameObject player;
     ClickEvent clickOk;
@@ -24,7 +26,7 @@ public class Portal : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         if (isPlayerOn&&clickOk.isClicked)

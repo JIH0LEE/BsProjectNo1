@@ -7,18 +7,16 @@ using UnityEngine.EventSystems;
 public class DontDestroy : MonoBehaviour
 {
     static DontDestroy instance =null;
-    // Start is called before the first frame update
+  
     void Start()
     {
         
-        if (instance == null)
-        {
-            
-            
+        if (instance == null)                           //Don't Destroy on next scene, if there is not same Object.
+        { 
             instance = this;
             DontDestroyOnLoad(this.gameObject);
         }
-        else if(instance!=null)
+        else if(instance!=null)                         //Don create new Object when going to next scene.
         {
             
             Destroy(this.gameObject);
@@ -26,7 +24,7 @@ public class DontDestroy : MonoBehaviour
        
     }
 
-    // Update is called once per frame
+  
     void Update()
     {
         

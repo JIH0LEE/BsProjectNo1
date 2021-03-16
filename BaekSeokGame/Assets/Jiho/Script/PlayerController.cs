@@ -4,19 +4,21 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public RectTransform joyStick;
+    
+   
     Rigidbody2D playerRigid;
     Vector2 speed;
     Animator anim;
     Vector3 lookingVec;
     RaycastHit2D rayHit;
     GameObject scanObj;
-   public GameObject OKbutton;
     
+    
+    
+    
+    public GameObject OKbutton;
+    public RectTransform joyStick;
     public DialogController dialog;
-   
-
     public string currentMapName;
     
     float power;
@@ -38,10 +40,7 @@ public class PlayerController : MonoBehaviour
 
         return;
     }
-    public void Test()
-    {
-        Debug.Log("??");
-    }
+    
     public int PlayerDir(float x,float y)
     {
         if (x == 0 && y == 0)
@@ -110,13 +109,13 @@ public class PlayerController : MonoBehaviour
         power = 5.0f ;
     }
 
-    // Update is called once per frame
+ 
     void Update()
     {
  
         if (OKbutton.GetComponent<PointerListener>().pressed&& scanObj != null)
         {
-            //Debug.Log("why???");
+            
             Talkwith();
             OKbutton.GetComponent<PointerListener>().pressed = false;
         }

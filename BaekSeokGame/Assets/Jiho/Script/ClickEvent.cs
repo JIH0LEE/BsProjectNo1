@@ -5,7 +5,7 @@ using UnityEngine;
 public class ClickEvent : MonoBehaviour
 {
     public bool isClicked;
-    // Start is called before the first frame update
+
    
    public void Click()
     {
@@ -18,7 +18,6 @@ public class ClickEvent : MonoBehaviour
         isClicked = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         

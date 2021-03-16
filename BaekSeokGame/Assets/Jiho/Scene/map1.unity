@@ -5912,7 +5912,7 @@ GameObject:
   - component: {fileID: 634859206}
   - component: {fileID: 634859209}
   m_Layer: 5
-  m_Name: OK
+  m_Name: OKButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5927,7 +5927,7 @@ RectTransform:
   m_GameObject: {fileID: 634859204}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 578000412}
   m_Father: {fileID: 906982338}
@@ -5935,8 +5935,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -150, y: 152.4}
-  m_SizeDelta: {x: 150, y: 145.27582}
+  m_AnchoredPosition: {x: -200, y: 200}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &634859206
 MonoBehaviour:
@@ -6183,7 +6183,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &871830987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6409,9 +6409,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57df1f5edac66d944868970877aab7eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Button: {fileID: 1869636027}
-  ui: {fileID: 1320707045}
-  name: {fileID: 1212578061}
+  hidingObject: {fileID: 1869636027}
+  dialogUI: {fileID: 871830986}
+  npcName: {fileID: 1212578061}
   dialogBody: {fileID: 1782263251}
 --- !u!1 &951512021
 GameObject:
@@ -6511,8 +6511,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 925f9ca40138bdb4f99e4100bd6deae3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  joyStick: {fileID: 335151545}
   OKbutton: {fileID: 634859204}
+  joyStick: {fileID: 335151545}
   dialog: {fileID: 922170396}
   currentMapName: 
 --- !u!61 &951512025
@@ -6642,7 +6642,7 @@ GameObject:
   - component: {fileID: 1212578062}
   - component: {fileID: 1212578061}
   m_Layer: 5
-  m_Name: 1
+  m_Name: NameUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6720,12 +6720,12 @@ GameObject:
   - component: {fileID: 1320707048}
   - component: {fileID: 1320707047}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1320707046
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7108,7 +7108,7 @@ GameObject:
   - component: {fileID: 1782263252}
   - component: {fileID: 1782263251}
   m_Layer: 5
-  m_Name: 2
+  m_Name: BodyUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7202,7 +7202,7 @@ RectTransform:
   m_GameObject: {fileID: 1869636027}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 335151545}
   m_Father: {fileID: 906982338}
@@ -7210,7 +7210,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 150, y: 150}
+  m_AnchoredPosition: {x: 200, y: 200}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1869636029
