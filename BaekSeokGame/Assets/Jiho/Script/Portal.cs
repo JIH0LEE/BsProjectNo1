@@ -12,13 +12,13 @@ public class Portal : MonoBehaviour
 
     PlayerController playerControl;
     GameObject player;
-    ClickEvent clickOk;
+    PointerListener clickOk;
     bool isPlayerOn = false;
     
         void Start()
     {
         playerControl = FindObjectOfType<PlayerController>();
-        clickOk = FindObjectOfType<ClickEvent>();
+        clickOk = FindObjectOfType<PointerListener>();
         player = GameObject.FindGameObjectWithTag("Player");
         if (playerControl.currentMapName == currentMap)
         {
@@ -29,17 +29,17 @@ public class Portal : MonoBehaviour
     
     void Update()
     {
-        if (isPlayerOn&&clickOk.isClicked)
+        if (isPlayerOn&&clickOk.pressed)
         {
 
             playerControl.currentMapName = nextMap;
-            clickOk.isClicked = false;
+            clickOk.pressed = false;
             SceneManager.LoadScene(nextMap);
            
         }
         else
         {
-            clickOk.isClicked = false;
+            clickOk.pressed = false;
         }
     }
 
