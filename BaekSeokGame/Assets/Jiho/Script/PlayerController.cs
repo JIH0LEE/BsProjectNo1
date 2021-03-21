@@ -7,17 +7,17 @@ public class PlayerController : MonoBehaviour
     
    
     Rigidbody2D playerRigid;
-    Vector2 speed;
+    Vector2 movement;
     Animator anim;
     Vector3 lookingVec;
     RaycastHit2D rayHit;
     GameObject scanObj;
-    
-    
-    
-    
+
+    public float speed = 5f;
+
+
     public GameObject OKbutton;
-    public RectTransform joyStick;
+    public Joystick joystick;
     public DialogController dialog;
     public string currentMapName;
     
@@ -120,22 +120,20 @@ public class PlayerController : MonoBehaviour
             OKbutton.GetComponent<PointerListener>().pressed = false;
         }
 
+        movement.x = joystick.Horizontal;
+        movement.y = joystick.Vertical;
     }
     
        
     
     void FixedUpdate()
     {
-        speed = joyStick.anchoredPosition;
-        if (speed.magnitude > 1)
-        {
-            speed = speed.normalized;
-        }
+        
 
 
-        playerRigid.velocity = speed * power;
-        x = playerRigid.velocity.x;
-       y= playerRigid.velocity.y;
+        playerRigid.velocity = movement * speed;
+        x = movement.x;
+        y = movement.y; 
         anim.SetInteger("playerDirection", PlayerDir(x, y));
 
 
