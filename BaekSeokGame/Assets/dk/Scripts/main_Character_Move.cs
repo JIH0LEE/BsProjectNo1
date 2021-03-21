@@ -17,6 +17,8 @@ public class main_Character_Move : MonoBehaviour
         
     }
 
+   
+
     // Update is called once per frame
     void Update()
     {

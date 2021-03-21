@@ -12,14 +12,16 @@ public class Portal : MonoBehaviour
 
     PlayerController playerControl;
     GameObject player;
+   public GameObject okButton;
     PointerListener clickOk;
     bool isPlayerOn = false;
     
         void Start()
     {
+       
         playerControl = FindObjectOfType<PlayerController>();
-        clickOk = FindObjectOfType<PointerListener>();
-        player = GameObject.FindGameObjectWithTag("Player");
+        clickOk = okButton.GetComponent<PointerListener>();   
+            player = GameObject.FindGameObjectWithTag("Player");
         if (playerControl.currentMapName == currentMap)
         {
             player.transform.position = this.transform.position;
