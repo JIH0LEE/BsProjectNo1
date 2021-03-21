@@ -12,13 +12,13 @@ public class Portal : MonoBehaviour
 
     PlayerController playerControl;
     GameObject player;
-   public GameObject okButton;
+    GameObject okButton;
     PointerListener clickOk;
     bool isPlayerOn = false;
     
         void Start()
     {
-       
+        okButton = GameObject.Find("OKButton");
         playerControl = FindObjectOfType<PlayerController>();
         clickOk = okButton.GetComponent<PointerListener>();   
             player = GameObject.FindGameObjectWithTag("Player");
