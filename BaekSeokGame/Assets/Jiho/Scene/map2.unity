@@ -135,8 +135,8 @@ GameObject:
   - component: {fileID: 755410613}
   - component: {fileID: 755410612}
   m_Layer: 0
-  m_Name: portal
-  m_TagString: Untagged
+  m_Name: Portal_map2_a
+  m_TagString: portals
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -199,7 +199,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 755410608}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.06, y: -7.24, z: -0.9716439}
+  m_LocalPosition: {x: 0, y: -7, z: -1}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -219,6 +219,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentMap: map2
   nextMap: map1
+  nextPosition: {x: 0, y: 7}
 --- !u!50 &755410612
 Rigidbody2D:
   serializedVersion: 4
