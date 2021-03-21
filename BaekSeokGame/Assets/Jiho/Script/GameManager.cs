@@ -21,19 +21,8 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
-        if (menuButton.GetComponent<PointerListener>().pressed)
-        {
-
-            if (isActive == true)
-            {
-                isActive = false;
-                
-            }
-            else
-            {
-                isActive = true;
-            }
+       
             menuUI.SetActive(isActive);
-        }
+        
     }
 }
