@@ -8,7 +8,8 @@ public class Portal : MonoBehaviour
     
     public string currentMap;
     public string nextMap;
-
+    
+    bool isClicked;
 
     PlayerController playerControl;
     GameObject player;
@@ -18,6 +19,7 @@ public class Portal : MonoBehaviour
     
         void Start()
     {
+        isClicked = false;
         okButton = GameObject.Find("OKButton");
         playerControl = FindObjectOfType<PlayerController>();
         clickOk = okButton.GetComponent<PointerListener>();   
@@ -27,22 +29,27 @@ public class Portal : MonoBehaviour
             player.transform.position = this.transform.position;
         }
     }
+    public void isClickedChange()
+    {
+        if (isPlayerOn)
+        {
+
+            isClicked = true;
+        }
+    }
 
     
     void Update()
     {
-        if (isPlayerOn&&clickOk.pressed)
+        if (isClicked && isPlayerOn)
         {
 
             playerControl.currentMapName = nextMap;
-            clickOk.pressed = false;
+            isClicked = false;
             SceneManager.LoadScene(nextMap);
-           
         }
-        else
-        {
-            clickOk.pressed = false;
-        }
+                   
+        
     }
 
     void OnTriggerEnter2D(Collider2D Object)
