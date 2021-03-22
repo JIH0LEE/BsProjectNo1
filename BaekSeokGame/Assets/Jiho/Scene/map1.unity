@@ -6265,7 +6265,6 @@ GameObject:
   - component: {fileID: 634859208}
   - component: {fileID: 634859207}
   - component: {fileID: 634859206}
-  - component: {fileID: 634859209}
   m_Layer: 5
   m_Name: OKButton
   m_TagString: Untagged
@@ -6336,7 +6335,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 951512028}
+      - m_Target: {fileID: 951512024}
         m_MethodName: Click
         m_Mode: 1
         m_Arguments:
@@ -6384,19 +6383,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 634859204}
   m_CullTransparentMesh: 0
---- !u!114 &634859209
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 634859204}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68e98d3f777aa0a4193e63cdc6f5311d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pressed: 0
 --- !u!1 &646110300
 GameObject:
   m_ObjectHideFlags: 0
@@ -7206,6 +7192,7 @@ MonoBehaviour:
   joystick: {fileID: 1881534347}
   dialog: {fileID: 922170396}
   currentMapName: 
+  portal: {fileID: 0}
 --- !u!61 &951512025
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8152,7 +8139,7 @@ GameObject:
   - component: {fileID: 1633776017}
   m_Layer: 10
   m_Name: Npc1
-  m_TagString: Untagged
+  m_TagString: npc
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8519,7 +8506,7 @@ GameObject:
   - component: {fileID: 1954525421}
   m_Layer: 10
   m_Name: Npc2
-  m_TagString: Untagged
+  m_TagString: npc
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

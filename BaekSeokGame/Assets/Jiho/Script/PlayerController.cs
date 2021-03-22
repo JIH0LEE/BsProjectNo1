@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,8 +15,6 @@ public class PlayerController : MonoBehaviour
     GameObject scanObj;
 
     public float speed = 5f;
-
-
     public GameObject OKbutton;
     public Joystick joystick;
     public DialogController dialog;
@@ -25,16 +24,33 @@ public class PlayerController : MonoBehaviour
     float x;
     float y;
 
+    bool isPlayerOnPortal;
+
+   
+
+    string transferMapName;
+
+   
+
+    public Portal portal;
 
     public void Talkwith()
     {
 
+        
+
         if(scanObj == null)
         {
+            
             return;
         }
-       else if (scanObj.layer == LayerMask.NameToLayer("Npc"))
+        //else if (scanObj.layer == LayerMask.NameToLayer("Npc"))
+        // {
+        //     dialog.Action(scanObj);
+        // }
+        else if (scanObj.tag =="npc")
         {
+            
             dialog.Action(scanObj);
         }
 
@@ -107,18 +123,20 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
         playerRigid = GetComponent<Rigidbody2D>();
         power = 5.0f ;
+        isPlayerOnPortal = false;
+        
     }
 
  
     void Update()
     {
  
-        if (OKbutton.GetComponent<PointerListener>().pressed&& scanObj != null)
-        {
+        //if (OKbutton.GetComponent<PointerListener>().pressed&& scanObj != null)
+        //{
             
-            Talkwith();
-            OKbutton.GetComponent<PointerListener>().pressed = false;
-        }
+        //    Talkwith();
+        //    OKbutton.GetComponent<PointerListener>().pressed = false;
+        //}
 
         movement.x = joystick.Horizontal;
         movement.y = joystick.Vertical;
@@ -139,17 +157,77 @@ public class PlayerController : MonoBehaviour
 
 
         Debug.DrawRay(playerRigid.position,lookingVec*0.5f,new Color(0,1,0));
+        
         rayHit = Physics2D.Raycast(playerRigid.position, lookingVec, 0.5f, LayerMask.GetMask("Npc"));
+      
         if (rayHit.collider != null)
         {
+            
             scanObj = rayHit.collider.gameObject;
-           
+            
         }
         else
         {
             scanObj = null;
         }
     }
+    void OnTriggerEnter2D(Collider2D Object)
+    {
 
-    
+        //Debug.Log(Object.gameObject);
+
+        if (Object.tag == "portals")
+        {
+
+            isPlayerOnPortal = true;
+            portal = Object.gameObject.GetComponent<Portal>();
+        }
+        //if (Object.tag == "npc")
+        //{
+        //    isPlayerOnNPC = true;
+        //}
+
+    }
+    void OnTriggerExit2D(Collider2D Object)
+    {
+
+        if (Object.tag == "portals")
+        {
+            isPlayerOnPortal = false;
+            portal = null;
+        }
+        //if (Object.tag == "npc")
+        //{
+        //    isPlayerOnNPC = false;
+        //}
+
+    }
+    public void Click()
+    {
+      
+        if (isPlayerOnPortal == true)
+        {
+            Portal();
+        }
+        if (scanObj!=null&&scanObj.tag!=null)
+        {
+         
+            Talkwith();
+          
+        }
+    }
+
+    public void Portal()
+    {
+       
+        SceneManager.LoadScene(portal.nextMap);
+        this.transform.position = portal.nextPosition;
+    }
+
+    //public void Talk()
+    //{
+    //    Debug.Log("npc click");
+    //}
+
+
 }
