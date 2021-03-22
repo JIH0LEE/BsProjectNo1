@@ -22,7 +22,6 @@ public class DialogController : MonoBehaviour
     void Start()
     {
         dialogIdx = 0;
-
         portriatImage = portraitSprite.GetComponent<Image>();
     }       
 
@@ -55,8 +54,9 @@ public class DialogController : MonoBehaviour
         else
         {
             npcName.text =nameText;
-            dialogBody.text = body.Split(':')[0];
-            portriatImage.sprite = dialogData.GetPortrait(npc.id,int.Parse(body.Split(':')[1]));
+            dialogBody.text = body;
+            
+            portriatImage.sprite = dialogData.GetPortrait(npc.id,dialogIdx);
             isTalking = true;
             dialogIdx++;
         }
