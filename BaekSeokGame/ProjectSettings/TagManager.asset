@@ -6,6 +6,7 @@ TagManager:
   tags:
   - portals
   - npc
+  - npc2
   layers:
   - Default
   - TransparentFX
