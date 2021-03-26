@@ -137,7 +137,7 @@ public class PlayerController : MonoBehaviour
         //    Talkwith();
         //    OKbutton.GetComponent<PointerListener>().pressed = false;
         //}
-
+            
         movement.x = joystick.Horizontal;
         movement.y = joystick.Vertical;
     }

@@ -11,6 +11,7 @@ using System;
 public class MyTextData
 {
     public int id;
+    public int status;
     public int[] emotion;
     public string[] script;
 
@@ -22,9 +23,12 @@ public class MyTextDataArray
 }
 public class DialogData : MonoBehaviour
 {
-    TextAsset textData;
+    public int chapterNo;
+    TextAsset npcTextData;
     Dictionary<int, Sprite> portraitData;
-    MyTextDataArray myText;
+    MyTextDataArray npcText;
+    TextAsset playerTextData;
+    MyTextDataArray playerText;
     public Sprite[] portraits;
     void Start()
     {
@@ -33,35 +37,62 @@ public class DialogData : MonoBehaviour
     }
     void GenerateData()
     {
-        textData = Resources.Load("script") as TextAsset;
-        myText = JsonUtility.FromJson<MyTextDataArray>(textData.ToString());
-        portraitData.Add(1000 + 0, portraits[0]);
-        portraitData.Add(1000 + 1, portraits[1]);
+        npcTextData = Resources.Load("npcScript") as TextAsset;
+        npcText = JsonUtility.FromJson<MyTextDataArray>(npcTextData.ToString());
+        playerTextData = Resources.Load("playerScript") as TextAsset;
+        playerText = JsonUtility.FromJson<MyTextDataArray>(playerTextData.ToString());
+        portraitData.Add(0 + 0, portraits[0]);
+        portraitData.Add(0+1, portraits[1]);
+        portraitData.Add(1000 + 0, portraits[1]);
+        portraitData.Add(1000 + 1, portraits[0]);
         portraitData.Add(1100 + 0, portraits[0]);
         portraitData.Add(1100 + 1, portraits[1]);
 
     }
 
-    public string GetDialog(int id, int idx)
+    public string GetNpcDialog(int id, int idx)
     {
-        int findIndex = Array.FindIndex(myText.data, i => i.id == id);
-        if (idx >= myText.data[findIndex].script.Length)
+        int findIndex = Array.FindIndex(npcText.data, i => i.id == id&&i.status==chapterNo);
+        if (idx >= npcText.data[findIndex].script.Length)
         {
             return null;
         }
         else
         {
-            return myText.data[findIndex].script[idx];
+            return npcText.data[findIndex].script[idx];
         }
         
     }
 
-    public Sprite GetPortrait(int id, int idx)
+    public Sprite GetNpcPortrait(int id, int idx)
     {
-        int findIndex = Array.FindIndex(myText.data, i => i.id == id);
-        int emotionIdx = myText.data[findIndex].emotion[idx];
+        int findIndex = Array.FindIndex(npcText.data, i => i.id == id&& i.status == chapterNo);
+        int emotionIdx = npcText.data[findIndex].emotion[idx];
       
         return portraitData[id + emotionIdx];
+    }
+    public string GetPlayerDialog(int id, int idx)
+    {
+        int findIndex = Array.FindIndex(playerText.data, i => i.id == id&& i.status == chapterNo);
+        if (idx >= playerText.data[findIndex].script.Length)
+        {
+            return null;
+        }
+        else
+        {
+            return playerText.data[findIndex].script[idx];
+        }
+
+    }
+
+    public Sprite GetPlayerPortrait(int id, int idx)
+    {
+        int findIndex = Array.FindIndex(playerText.data, i => i.id == id&& i.status == chapterNo);
+        int emotionIdx = playerText.data[findIndex].emotion[idx];
+
+      
+
+        return portraitData[0 + emotionIdx];
     }
 
 
