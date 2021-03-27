@@ -61,6 +61,8 @@ public class DialogController : MonoBehaviour
             {
                 isTalking = false;
                 playerPortrait.gameObject.SetActive(true);
+                npcPortraitImage.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                playerPortraitImage.GetComponent<Image>().color = new Color(1, 1, 1, 1);
                 dialogIdx = 0;
                 return;
             }
@@ -83,7 +85,10 @@ public class DialogController : MonoBehaviour
                 
                 if (body == null)
                 {
+                    npcPortraitImage.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                    playerPortraitImage.GetComponent<Image>().color = new Color(1, 1, 1, 1);
                     isTalking = false;
+                  
                     dialogIdx = 0;
                     return;
                 }
