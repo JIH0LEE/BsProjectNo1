@@ -19,7 +19,7 @@ TagManager:
   - Player
   - Portal
   - Npc
-  - 
+  - Enemies
   - 
   - 
   - 
@@ -41,6 +41,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Map_BackGround
+    uniqueID: 2120012797
+    locked: 0
+  - name: Map_Object
+    uniqueID: 2362334163
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Character
+    uniqueID: 3122948505
+    locked: 0
+  - name: UI
+    uniqueID: 2535039083
     locked: 0

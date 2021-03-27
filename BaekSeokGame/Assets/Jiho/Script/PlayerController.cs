@@ -19,6 +19,11 @@ public class PlayerController : MonoBehaviour
     public Joystick joystick;
     public DialogController dialog;
     public string currentMapName;
+
+    public float attackRate = 2f;
+    float nextAttackTime = 0f;
+
+    public Combat combat;
     
     float power;
     float x;
@@ -118,10 +123,14 @@ public class PlayerController : MonoBehaviour
         return 0;
        
     }
+
+
+
     void Start()
     {
         anim = GetComponent<Animator>();
         playerRigid = GetComponent<Rigidbody2D>();
+        combat = gameObject.GetComponent<Combat>();
         power = 5.0f ;
         isPlayerOnPortal = false;
         
@@ -140,6 +149,12 @@ public class PlayerController : MonoBehaviour
             
         movement.x = joystick.Horizontal;
         movement.y = joystick.Vertical;
+
+        if(movement != Vector2.zero)
+        {
+            anim.SetFloat("Horizontal", movement.x);
+            anim.SetFloat("Vertical", movement.y);
+        }
     }
     
        
@@ -151,8 +166,14 @@ public class PlayerController : MonoBehaviour
 
         playerRigid.velocity = movement * speed;
         x = movement.x;
-        y = movement.y; 
-        anim.SetInteger("playerDirection", PlayerDir(x, y));
+        y = movement.y;
+        PlayerDir(x, y);
+        if (movement != Vector2.zero)
+        {
+            anim.SetFloat("Horizontal", movement.x);
+            anim.SetFloat("Vertical", movement.y);
+        }
+        anim.SetFloat("Speed", movement.sqrMagnitude);
 
 
 
@@ -209,11 +230,21 @@ public class PlayerController : MonoBehaviour
         {
             Portal();
         }
-        if (scanObj!=null&&scanObj.tag!=null)
+        else if (scanObj!=null&&scanObj.tag!=null)
         {
          
             Talkwith();
           
+        } 
+        else
+        {
+            if(Time.time >= nextAttackTime)
+            {
+                AttackAnimation();
+                nextAttackTime = Time.time + 1f / attackRate;
+            }
+            
+            
         }
     }
 
@@ -224,6 +255,11 @@ public class PlayerController : MonoBehaviour
         this.transform.position = portal.nextPosition;
     }
 
+    public void AttackAnimation()
+    {
+        anim.SetTrigger("Attack");
+        combat.Attack();
+    }
     //public void Talk()
     //{
     //    Debug.Log("npc click");
