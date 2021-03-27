@@ -10,20 +10,23 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D playerRigid;
     Vector2 movement;
     Animator anim;
-    Vector3 lookingVec;
+    public Vector3 lookingVec;
     RaycastHit2D rayHit;
     GameObject scanObj;
 
-    public float speed = 5f;
+    
     public GameObject OKbutton;
     public Joystick joystick;
     public DialogController dialog;
+    public Combat combat;
+
+    public float speed = 5f;
     public string currentMapName;
 
     public float attackRate = 2f;
     float nextAttackTime = 0f;
 
-    public Combat combat;
+    
     
     float power;
     float x;
@@ -150,11 +153,7 @@ public class PlayerController : MonoBehaviour
         movement.x = joystick.Horizontal;
         movement.y = joystick.Vertical;
 
-        if(movement != Vector2.zero)
-        {
-            anim.SetFloat("Horizontal", movement.x);
-            anim.SetFloat("Vertical", movement.y);
-        }
+
     }
     
        
@@ -168,6 +167,7 @@ public class PlayerController : MonoBehaviour
         x = movement.x;
         y = movement.y;
         PlayerDir(x, y);
+        //마지막으로 바라본 방향 애니메이션 유지하게 함
         if (movement != Vector2.zero)
         {
             anim.SetFloat("Horizontal", movement.x);

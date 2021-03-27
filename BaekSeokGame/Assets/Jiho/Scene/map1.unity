@@ -239,6 +239,31 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &263265835 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2174253875424309289, guid: 45e5a146221b6d14a95ed9d32b36d418,
+    type: 3}
+  m_PrefabInstance: {fileID: 436704235}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &263265841
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263265835}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 94dc25e9c756e8740bca94bd4950b7dd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &285823076
 GameObject:
   m_ObjectHideFlags: 0
@@ -6053,10 +6078,24 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 380898436, guid: 45e5a146221b6d14a95ed9d32b36d418, type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 263265841}
     - target: {fileID: 2174253875424309289, guid: 45e5a146221b6d14a95ed9d32b36d418,
         type: 3}
       propertyPath: m_Name
       value: enemy_test
+      objectReference: {fileID: 0}
+    - target: {fileID: 2174253875424309292, guid: 45e5a146221b6d14a95ed9d32b36d418,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2174253875424309293, guid: 45e5a146221b6d14a95ed9d32b36d418,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2174253875424309294, guid: 45e5a146221b6d14a95ed9d32b36d418,
         type: 3}
@@ -6072,6 +6111,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2174253875424309294, guid: 45e5a146221b6d14a95ed9d32b36d418,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2174253875424309294, guid: 45e5a146221b6d14a95ed9d32b36d418,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1172018791
       objectReference: {fileID: 0}
     - target: {fileID: 2174253875424309295, guid: 45e5a146221b6d14a95ed9d32b36d418,
         type: 3}
@@ -9663,8 +9712,8 @@ GameObject:
   - component: {fileID: 951512022}
   - component: {fileID: 951512026}
   - component: {fileID: 951512025}
-  - component: {fileID: 951512024}
   - component: {fileID: 951512027}
+  - component: {fileID: 951512024}
   - component: {fileID: 951512028}
   - component: {fileID: 951512029}
   m_Layer: 0
@@ -9751,13 +9800,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 925f9ca40138bdb4f99e4100bd6deae3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  lookingVec: {x: 0, y: 0, z: 0}
   OKbutton: {fileID: 634859204}
   joystick: {fileID: 1881534347}
   dialog: {fileID: 922170396}
+  combat: {fileID: 951512029}
+  speed: 10
   currentMapName: 
   attackRate: 2
-  combat: {fileID: 951512029}
   portal: {fileID: 0}
 --- !u!61 &951512025
 BoxCollider2D:
@@ -9851,11 +9901,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameover: {fileID: 2019914592}
-  attackPoint: {fileID: 1900513620}
-  attackRange: 0.2
+  playerController: {fileID: 951512024}
   enemyLayers:
     serializedVersion: 2
     m_Bits: 2048
+  attackPoint: {fileID: 1900513620}
+  attackRange: 0.3
+  attackPosition: {x: -1.08, y: 0}
   maxHealth: 100
   currentHealth: 0
   attackDamage: 35
@@ -11136,7 +11188,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1900513619}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.432, z: 0}
+  m_LocalPosition: {x: 0, y: 0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 951512023}

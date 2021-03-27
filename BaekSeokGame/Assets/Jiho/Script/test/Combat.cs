@@ -9,15 +9,17 @@ using UnityEngine;
 public class Combat : MonoBehaviour
 {
     public GameObject gameover; // 게임오버에 써놓은 대로 지금은 별 의미 없음
+    public PlayerController playerController;
+
+    public LayerMask enemyLayers;
+    public Transform attackPoint;
+
+    public float attackRange = 0.5f;
+    public Vector2 attackPosition = new Vector2(0f,0f);
 
     
 
-    public Transform attackPoint;
-    public float attackRange = 0.5f;
-
-    public LayerMask enemyLayers;
-
-
+        
     public int maxHealth = 100; 
     public int currentHealth;
     public int attackDamage = 35;
@@ -46,7 +48,15 @@ public class Combat : MonoBehaviour
         {
             TakeDamage(20);
         }
+
+        SetAttackPosition();
         
+        
+    }
+
+    void SetAttackPosition()
+    {
+        attackPoint.localPosition = playerController.lookingVec * 0.35f;
     }
 
     public void Attack()
