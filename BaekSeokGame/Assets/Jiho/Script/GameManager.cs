@@ -14,7 +14,10 @@ public class GameManager : MonoBehaviour
     }
 
     // Update is called once per frame
-
+    public void saveData()
+    {
+        DataController.Instance.SaveGameData();
+    }
     public void changeActive()
     {
         isActive = !isActive;   

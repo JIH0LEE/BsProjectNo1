@@ -128,7 +128,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-
+    static bool onLoad=false;
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -136,10 +136,23 @@ public class PlayerController : MonoBehaviour
         combat = gameObject.GetComponent<Combat>();
         power = 5.0f ;
         isPlayerOnPortal = false;
-        
-    }
 
- 
+        if (!onLoad) 
+        {
+            this.transform.position = new Vector3(DataController.Instance.gameData.playerX, DataController.Instance.gameData.playerY, 0);
+            SceneManager.LoadScene(DataController.Instance.gameData.currentMap);
+            onLoad = true;
+            
+        }
+       
+
+
+
+
+    }
+   
+
+
     void Update()
     {
  
@@ -175,6 +188,9 @@ public class PlayerController : MonoBehaviour
         }
         anim.SetFloat("Speed", movement.sqrMagnitude);
 
+
+        DataController.Instance.gameData.playerX = this.transform.position.x;
+        DataController.Instance.gameData.playerY = this.transform.position.y    ;
 
 
         Debug.DrawRay(playerRigid.position,lookingVec*0.5f,new Color(0,1,0));
@@ -227,7 +243,9 @@ public class PlayerController : MonoBehaviour
     {
       
         if (isPlayerOnPortal == true)
+            
         {
+            Debug.Log("err");
             Portal();
         }
         else if (scanObj!=null&&scanObj.tag!=null)
@@ -252,6 +270,7 @@ public class PlayerController : MonoBehaviour
     {
        
         SceneManager.LoadScene(portal.nextMap);
+        DataController.Instance.gameData.currentMap = portal.nextMap;
         this.transform.position = portal.nextPosition;
     }
 
