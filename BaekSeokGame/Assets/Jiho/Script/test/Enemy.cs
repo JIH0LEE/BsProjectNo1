@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
 {
     public Animator anim;
 
-    public enum CurrentState { idle, trace };
+    public enum CurrentState { idle, trace, attack };
     public CurrentState curState = CurrentState.idle;
 
     private Transform _transform;
@@ -22,7 +22,8 @@ public class Enemy : MonoBehaviour
 
     public int enemyDamage = 10;
 
-    public float traceDist = 3.0f;
+    public float traceDist = 6.0f;
+    public float attackDist = 3.0f;
 
     bool isDead = false;
 
@@ -79,9 +80,12 @@ public class Enemy : MonoBehaviour
 
             float dist = Vector3.Distance(playerTransform.position, _transform.position);
 
-            if(dist < traceDist)
+            if(dist < traceDist && dist > attackDist)
             {
                 curState = CurrentState.trace;
+            } else if (dist < attackDist)
+            {
+                curState = CurrentState.attack;
             } else
             {
                 curState = CurrentState.idle;
@@ -97,6 +101,9 @@ public class Enemy : MonoBehaviour
             {
                 case CurrentState.idle:
                     enemyRigid.velocity = new Vector2(0,0);
+                    break;
+                case CurrentState.attack:
+                    enemyRigid.velocity = new Vector2(0, 0);
                     break;
                 case CurrentState.trace:
                     movement.x = playerTransform.position.x - _transform.position.x;
