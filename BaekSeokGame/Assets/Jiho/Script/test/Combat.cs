@@ -17,6 +17,8 @@ public class Combat : MonoBehaviour
     public float attackRange = 0.5f;
     public Vector2 attackPosition = new Vector2(0f,0f);
 
+    public bool isInvulnerable = false;
+
     
 
         
@@ -72,12 +74,42 @@ public class Combat : MonoBehaviour
         }
     }
 
-    void TakeDamage(int damage)
+    //cc기나 속성 데미지같은걸 입었을때 처리 차이 두기 위해서 TakeDamage와 구분
+    //현재는 미구현이라 그냥 takedamage랑 똑같다고 보면 됨
+    public void TakeHit(int damage)
     {
+
+        
+        if (isInvulnerable == true)
+        {
+            return;
+        }
+        TakeDamage(damage);
+
+        StartCoroutine(BecomeInvulnerabale());
+        
+    }
+
+    public void TakeDamage(int damage)
+    {
+        
         currentHealth -= damage;
 
         healthBar.SetHealth(currentHealth);
     }
+
+    //무적시간을 처리함
+    private IEnumerator BecomeInvulnerabale()
+    {
+        Debug.Log("invulnerable on");
+        isInvulnerable = true;
+
+        yield return new WaitForSeconds(1);
+
+        isInvulnerable = false;
+        Debug.Log("invulnerable off");
+    }
+
 
     private void OnDrawGizmosSelected()
     {

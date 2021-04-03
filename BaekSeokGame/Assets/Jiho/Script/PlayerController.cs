@@ -27,7 +27,6 @@ public class PlayerController : MonoBehaviour
     float nextAttackTime = 0f;
 
     
-    
     float power;
     float x;
     float y;
